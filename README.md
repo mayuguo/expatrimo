@@ -40,7 +40,7 @@ So the site must be deployed **from GitHub**, not uploaded as a zip.
      Copy the *Client ID* and generate a *Client secret*.
    - On Vercel: *Project → Settings → Environment Variables*, add `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`
      with those two values, then *Deployments → Redeploy*.
-5. In `static/admin/config.yml`, replace `OWNER/REPO` with your repository, for example `my-account/expatrimo-site`, and commit.
+5. `static/admin/config.yml` already points to `mayuguo/expatrimo`.
 
 Anyone who should be able to publish needs a GitHub account with write access to the repository.
 
