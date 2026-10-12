@@ -43,6 +43,7 @@ So the site must be deployed **from GitHub**, not uploaded as a zip.
 5. `static/admin/config.yml` already points to `mayuguo/expatrimo`.
 
 Anyone who should be able to publish needs a GitHub account with write access to the repository.
+Editor login is configured on Vercel (GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET set on 12 Oct 2026).
 
 ## Building locally (optional)
 
