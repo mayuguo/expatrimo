@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Expatrimo · Administration</title>
+  <link rel="icon" href="/assets/favicon.png">
+  <!-- Chemin absolu : fonctionne aussi si la page est ouverte via /admin sans barre finale -->
+  <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Aperçu des articles avec le style du site
+    CMS.registerPreviewStyle('/assets/style.css');
+  </script>
+</body>
+</html>

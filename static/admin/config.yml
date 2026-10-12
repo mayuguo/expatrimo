@@ -1,0 +1,55 @@
+# Éditeur d'articles Expatrimo (Decap CMS)
+backend:
+  name: github
+  repo: mayuguo/expatrimo
+  branch: main
+  # Connexion GitHub gérée par les fonctions api/auth.js et api/callback.js (Vercel)
+  base_url: https://expatrimo.com
+  auth_endpoint: api/auth/
+  commit_messages:
+    create: "Nouvel article : {{slug}}"
+    update: "Mise à jour : {{slug}}"
+    delete: "Suppression : {{slug}}"
+    uploadMedia: "Image : {{path}}"
+    deleteMedia: "Suppression image : {{path}}"
+
+locale: fr
+site_url: https://expatrimo.com
+display_url: https://expatrimo.com
+logo_url: /assets/expatrimo-logo.png
+
+# Les images envoyées sont stockées avec les images existantes
+media_folder: static/wp-content/uploads
+public_folder: /wp-content/uploads
+
+collections:
+  - name: actualites
+    label: Actualités
+    label_singular: Article
+    description: "Les articles publiés dans la rubrique Actualités. Chaque article est publié à l'adresse expatrimo.com/actualites/<identifiant>/."
+    folder: content/actualites
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    view_filters:
+      - {label: "Immobilier", field: categories, pattern: "Immobilier"}
+      - {label: "Épargne & Finance", field: categories, pattern: "Épargne"}
+      - {label: "Assurance-vie", field: categories, pattern: "Assurance-vie"}
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Date de publication", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, picker_utc: true}
+      - label: "Catégories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        min: 1
+        options: ["Actualités", "Immobilier", "Épargne & Finance", "Assurance-vie", "Établissements de santé", "Nue-propriété temporaire", "Résidences étudiantes", "SCPI", "Crédit", "Résidences tourisme", "Résidence service", "Déficit Foncier"]
+      - {label: "Image principale", name: "image", widget: "image", required: false, hint: "Affichée en haut de l'article et dans la liste des articles. Format paysage conseillé (environ 1200 × 675)."}
+      - {label: "Résumé (facultatif)", name: "description", widget: "text", required: false, hint: "Deux lignes affichées dans la liste des articles et sur Google. Si vide, le début du texte est utilisé."}
+      - {label: "Brouillon", name: "draft", widget: "boolean", default: false, required: false, hint: "Cochez pour enregistrer sans publier sur le site."}
+      - {label: "Mise à jour (facultatif)", name: "updated", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, picker_utc: true, required: false}
+      - {label: "Texte", name: "body", widget: "markdown", buttons: ["bold", "italic", "link", "heading-two", "heading-three", "bulleted-list", "numbered-list", "quote"], editor_components: ["image"]}

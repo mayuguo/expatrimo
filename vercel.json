@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "python3 src/build.py",
+  "outputDirectory": "public",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/actualites/interview-de-vincent-leroy-dans-gestion-de-fortune/", "destination": "/actualites/", "permanent": true },
+    { "source": "/actualites/temoignage-de-hugues-martin-dans-connexions/", "destination": "/actualites/", "permanent": true },
+    { "source": "/actualites/page/:n*", "destination": "/actualites/", "permanent": true },
+    { "source": "/category/:path*", "destination": "/actualites/", "permanent": true },
+    { "source": "/feed/:path*", "destination": "/actualites/", "permanent": true },
+    { "source": "/projet/:path*", "destination": "/projets/", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/admin/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex" } ] }
+  ]
+}
